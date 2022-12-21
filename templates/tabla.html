@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+    <title>TURNOS RESERVADOS</title>
+</head>
+
+<body>
+<h1> Turnos asignados para {{nombre}}</h1>
+<br><br>
+<table border="1">
+    <thead cellpadding="1.0" cellspacing="1.0">
+        <tr>
+            <th>Fecha</th>                        
+        </tr>
+        {% for row in data %}
+        <tr>            
+            <td>{{row['fecha']}}</td>            
+        </tr>
+        {% endfor %}
+    </thead>
+</table>
+
+<br><br>
+
+<form action="{{url_for('index')}}">
+    <input type="submit" value="Inicio"/>
+</form>
+
+</body>
+</html>

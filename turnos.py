@@ -49,6 +49,15 @@ def consultar():
         json_result_list.append(json_result)
     return json_result_list
 
+def verturno(nombre):
+    Session = sessionmaker(bind=engine)
+    session = Session()
+    query = session.query(Turnos).filter(Turnos.paciente == nombre)   
+    json_result_list = []
+    for turno in query:    
+        json_result = {'fecha': turno.fecha_y_hora, 'paciente': turno.paciente, 'doctor': turno.doctor}
+        json_result_list.append(json_result)
+    return json_result_list
    
 def fill():       
     Session = sessionmaker(bind=engine)

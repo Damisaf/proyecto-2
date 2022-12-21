@@ -61,6 +61,28 @@ def registro():
             return jsonify({'trace': traceback.format_exc()})
 
 
+@app.route("/consulta", methods=['GET', 'POST'])
+def consulta():
+    if request.method == 'GET':
+        try:                                            
+            data = turnos.consultar()
+            return render_template('consulta.html')
+        except:
+            return jsonify({'trace': traceback.format_exc()})
+
+    if request.method == 'POST':
+        try:
+            nombre = str(request.form.get('name')).lower()
+            data = turnos.verturno(nombre)           
+            if(nombre == ""):
+                # Datos ingresados incorrectos
+                return render_template('sinnombre.html')  
+            else:
+                data = turnos.verturno(nombre)
+                return render_template('tabla.html', nombre=nombre, data=data)  
+        except:
+            return jsonify({'trace': traceback.format_exc()})
+
 
 if __name__ == '__main__':
     # Lanzar server

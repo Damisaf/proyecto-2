@@ -1,0 +1,14 @@
+<!doctype html>
+<html>
+<body>
+    <h1>Turno asignado</h1>
+    <h1> Nombre y apellido: {{nombre}}</h1>
+    <h1> Fecha: {{turno}}</h1>
+    
+    <!-- Codigo utilizado para redireccionar a otra pagina-->
+    <form action="{{url_for('index')}}">
+        <input type="submit" value="Inicio"/>
+    </form>
+
+</body>
+</html>

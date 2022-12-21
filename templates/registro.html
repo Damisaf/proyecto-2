@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+
+<!-- Titulo de la página-->
+<head>
+    <title>Turnos</title>
+</head>
+
+<body>
+
+<h2>Turnos disponibles</h2>
+
+<p>Ingrese su Nombre y seleccione el turno deseado</p>
+
+<form method = "POST" action="{{url_for('registro')}}">
+  <label>Nombre:</label><br>
+  <input type="name" name="name"><br><br><br>
+
+  <div class="form-group">
+  <div class="input-group">
+      <span class="input-group-addon">Turnos Disponibles: </span>
+          <select name="turno" class="selectpicker form-control">
+             {% for row in data %}
+               <option >{{row['fecha']}} </option> 
+             {% endfor %}                 
+           </select>
+  </div>
+  <br><br> 
+  <input type="submit" value="Confirmar turno">
+   
+  </div>
+  
+</form> 
+
+<p></p>
+
+<br><br> 
+<form action="{{url_for('index')}}">
+  <input type="submit" value="Inicio"/>
+</form>
+
+</body>
+</html>
